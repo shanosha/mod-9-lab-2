@@ -1,5 +1,9 @@
 import type { StatsDisplayProps } from "../../types";
 
+/**
+ * A StatsDisplay component that displays the number of
+ * characters, words, and reading time.
+ */
 function StatsDisplay ({stats, showReadingTime = true}: StatsDisplayProps) {
     
     function secondsToMMSS(seconds: number): string {

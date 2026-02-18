@@ -1,5 +1,9 @@
 import type { TextInputProps } from '../../types';
 
+/**
+ * A TextInput component that displays a textarea,
+ * and utilizes a callback function to pass the textarea value.
+ */
 function TextInput ({onTextChange,placeholder = 'Start typing...',initialValue = ''}: TextInputProps) {
 
   return (
