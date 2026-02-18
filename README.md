@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# Character Counter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Summary
 
-Currently, two official plugins are available:
+A component that helps writers track their progress while writing. The component provides immediate feedback about the content length and estimated reading time, helping writers meet specific content requirements.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup and Usage
 
-## React Compiler
+- Clone the repository.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+git clone https://github.com/shanosha/mod-9-lab-2.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Navigate to the directory.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+cd mod-9-lab-2
+```
+
+- Install the node packages.
+
+```
+npm install
+```
+
+- Run the Vite development server.
+
+```
+npm run dev
+```
+
+- Open the server URL in a browser.
+
+- Begin typing in the textarea and you will see live statistics display and update as you type.
+
+## Reflections
+
+How did you handle state updates when the text changed?
+
+- I passed the updated value of the textarea to a callback function, that updated the state of the stats variable.
+
+What considerations did you make when calculating reading time?
+
+- I considered the formula that I wanted to use. I decided that I want to add one second to the reading time for every three words typed. I also did not want spaces to be concidered as words, so I trimmed the string and used regex to calculate the word count first.
+
+How did you ensure the UI remained responsive during rapid text input?
+
+- I used Tailwind to set the width of the text area to 100% of it's outer container, so that it sizes down automatically when the screen width decreases.
+
+What challenges did you face when implementing the statistics calculations?
+
+- One thing I had to account for was reformatting the reading time stat. I also wanted to pass the minimum and maximum text limits to the stats component, so that the values could be controlled by the main component, and individual stat styling could be adjusted based on different variables.
