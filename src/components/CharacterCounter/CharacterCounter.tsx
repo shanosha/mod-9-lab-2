@@ -42,9 +42,11 @@ function CharacterCounter ({minWords = 25, maxWords = 100, targetReadingTime = 0
 
     return (
 
-        <div className="w-xs mx-auto my-8 flex flex-col">
+        <div className="flex justify-center">
+        <div className="min-w-4/5 mx-4 my-8 flex flex-col">
             <TextInput onTextChange={handleTextChange} />
             <StatsDisplay stats={stats} showReadingTime={true} />
+        </div>
         </div>
 
     )
